@@ -1,0 +1,13 @@
+{
+  "name": "codecommerce-sistema-comercial",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing de lanzamiento — Sistema Comercial Autogestionable — CodeCommerce",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs"
+  },
+  "author": "CodeCommerce",
+  "license": "UNLICENSED"
+}
