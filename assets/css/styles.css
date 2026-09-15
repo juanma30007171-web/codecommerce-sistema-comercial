@@ -1221,16 +1221,24 @@ h3 { font-family: var(--font-body); font-size: var(--fs-h3); font-weight: 700; }
 .builders-row span { font-size: 0.92rem; color: var(--ink-soft); }
 .builders-row b { color: var(--ink); font-weight: 700; }
 
-/* ---------- Video comercial: el video es vertical (9:16) — se muestra en su
-   proporción real, como una tarjeta protagonista, nunca estirado a lo ancho
-   del wrap ni recortado con object-fit. ---------- */
-.video-showcase .section-lead { margin-bottom: 0; }
+/* ---------- Video comercial: pieza editorial de dos columnas en desktop
+   (copy | video vertical), una sola columna apilada en tablet/mobile. El
+   video conserva su proporción real 9:16 — nunca se estira ni se recorta. ---------- */
+.video-showcase-grid {
+  display: grid;
+  gap: clamp(2.25rem, 1.8rem + 2vw, 3.5rem);
+  align-items: center;
+}
+.video-showcase-copy { max-width: 46ch; }
+.video-showcase-copy .section-lead { margin-bottom: 0; }
+
 .video-frame {
-  margin: clamp(2.5rem, 2rem + 2.5vw, 4rem) auto 0;
-  max-width: 420px;
   width: 100%;
+  max-width: 390px;
+  margin: clamp(2rem, 1.6rem + 1.5vw, 2.75rem) auto 0;
 }
 .video-panel {
+  position: relative;
   padding: 0;
   overflow: hidden;
   background: var(--ink);
@@ -1239,10 +1247,39 @@ h3 { font-family: var(--font-body); font-size: var(--fs-h3); font-weight: 700; }
 .video-player {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 1728 / 3072;
   background: var(--ink);
 }
-@media (min-width: 640px) { .video-frame { max-width: 440px; } }
+
+/* Botón de play propio: sustituye a los controles nativos hasta el primer
+   clic, para que el poster se vea como una pieza diseñada y no como un
+   reproductor genérico con su barra de controles ya encima. */
+.video-play-btn {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(20, 24, 28, 0.55);
+  border: 1px solid rgba(241, 242, 237, 0.45);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+  cursor: pointer;
+  transition: transform 0.18s var(--ease), background 0.18s var(--ease), border-color 0.18s var(--ease);
+}
+.video-play-btn svg { width: 20px; height: 20px; margin-left: 3px; }
+.video-play-btn:hover { transform: scale(1.07); background: var(--signal); border-color: var(--signal); }
+.video-play-btn.is-hidden { opacity: 0; transform: scale(0.9); pointer-events: none; }
+
+@media (min-width: 980px) {
+  .video-showcase-grid { grid-template-columns: 1fr 0.7fr; }
+  .video-frame { margin: 0 auto; }
+}
 
 /* ---------- Reducir el reveal escalonado: los grids aparecen como un solo
    bloque, no elemento por elemento (evita el efecto "todo hace fade-up"). ---------- */

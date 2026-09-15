@@ -73,6 +73,19 @@
     });
   }
 
+  /* ---------- Video comercial: overlay de play propio sobre el poster ---------- */
+  const commercialVideo = document.getElementById("commercialVideo");
+  const videoPlayBtn = document.getElementById("videoPlayBtn");
+  if (commercialVideo && videoPlayBtn) {
+    videoPlayBtn.addEventListener("click", () => {
+      commercialVideo.setAttribute("controls", "");
+      commercialVideo.play();
+    });
+    commercialVideo.addEventListener("play", () => {
+      videoPlayBtn.classList.add("is-hidden");
+    });
+  }
+
   /* ---------- Scroll reveal ---------- */
   const revealEls = document.querySelectorAll("[data-reveal]");
   if ("IntersectionObserver" in window && revealEls.length) {

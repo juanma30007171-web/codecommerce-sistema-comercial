@@ -194,26 +194,34 @@
   <!-- ============================ 2. VIDEO COMERCIAL ============================ -->
   <section class="section video-showcase" id="video" aria-labelledby="video-h">
     <div class="wrap">
-      <p class="eyebrow" data-reveal>CodeCommerce en video</p>
-      <h2 id="video-h" data-reveal>Conoce CodeCommerce en 60 segundos</h2>
-      <p class="section-lead" data-reveal>Un sistema comercial diseñado para que tu empresa pueda atraer clientes,
-        gestionar oportunidades y crecer sin depender permanentemente de una agencia.</p>
+      <div class="video-showcase-grid">
+        <div class="video-showcase-copy">
+          <p class="eyebrow" data-reveal>CodeCommerce en video</p>
+          <h2 id="video-h" data-reveal>Conoce CodeCommerce en 60 segundos</h2>
+          <p class="section-lead" data-reveal>Un sistema comercial diseñado para que tu empresa pueda atraer clientes,
+            gestionar oportunidades y crecer sin depender permanentemente de una agencia.</p>
+        </div>
 
-      <div class="video-frame exhibit" data-reveal>
-        <div class="panel video-panel">
-          <video
-            class="video-player"
-            controls
-            preload="metadata"
-            playsinline
-            width="1728"
-            height="3072"
-            aria-label="Video oficial de presentación de CodeCommerce"
-          >
-            <source src="/assets/media/video/CodeCommerce_FINAL_v04.mp4" type="video/mp4" />
-            Tu navegador no soporta la reproducción de video en HTML5.
-            <a href="/assets/media/video/CodeCommerce_FINAL_v04.mp4">Descarga el video aquí</a>.
-          </video>
+        <div class="video-frame exhibit" data-reveal>
+          <div class="panel video-panel">
+            <video
+              class="video-player"
+              id="commercialVideo"
+              preload="metadata"
+              playsinline
+              poster="/assets/media/video/codecommerce-video-poster.webp"
+              width="1728"
+              height="3072"
+              aria-label="Video oficial de presentación de CodeCommerce"
+            >
+              <source src="/assets/media/video/CodeCommerce_FINAL_v04.mp4" type="video/mp4" />
+              Tu navegador no soporta la reproducción de video en HTML5.
+              <a href="/assets/media/video/CodeCommerce_FINAL_v04.mp4">Descarga el video aquí</a>.
+            </video>
+            <button type="button" class="video-play-btn" id="videoPlayBtn" aria-label="Reproducir video oficial de CodeCommerce">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
