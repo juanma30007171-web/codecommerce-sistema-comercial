@@ -1,6 +1,7 @@
 // Servidor estático de cero dependencias para preview local / QA.
 // Producción se despliega como archivos estáticos (Netlify, Vercel, Cloudflare Pages, etc.).
 import { createServer } from "node:http";
+import { createReadStream } from "node:fs";
 import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -24,9 +25,12 @@ const MIME = {
   ".ico": "image/x-icon",
   ".woff2": "font/woff2",
   ".txt": "text/plain; charset=utf-8",
-  ".xml": "application/xml; charset=utf-8"
+  ".xml": "application/xml; charset=utf-8",
+  ".mp4": "video/mp4"
 };
 
+// Video necesita soporte de Range (206 Partial Content) para que el navegador
+// pueda buscar/adelantar sin descargar el archivo completo primero.
 const server = createServer(async (req, res) => {
   try {
     let urlPath = decodeURIComponent(new URL(req.url, `http://localhost`).pathname);
@@ -41,12 +45,33 @@ const server = createServer(async (req, res) => {
       info = await stat(filePath);
     } catch {
       filePath = join(ROOT, "index.html");
+      info = await stat(filePath);
     }
-    if (info && info.isDirectory()) filePath = join(filePath, "index.html");
+    if (info.isDirectory()) {
+      filePath = join(filePath, "index.html");
+      info = await stat(filePath);
+    }
+
+    const type = MIME[extname(filePath)] || "application/octet-stream";
+    const range = req.headers.range;
+
+    if (range) {
+      const [startStr, endStr] = range.replace(/bytes=/, "").split("-");
+      const start = parseInt(startStr, 10);
+      const end = endStr ? parseInt(endStr, 10) : info.size - 1;
+      res.writeHead(206, {
+        "Content-Range": `bytes ${start}-${end}/${info.size}`,
+        "Accept-Ranges": "bytes",
+        "Content-Length": end - start + 1,
+        "Content-Type": type,
+        "Cache-Control": "no-cache"
+      });
+      createReadStream(filePath, { start, end }).pipe(res);
+      return;
+    }
 
     const data = await readFile(filePath);
-    const type = MIME[extname(filePath)] || "application/octet-stream";
-    res.writeHead(200, { "Content-Type": type, "Cache-Control": "no-cache" });
+    res.writeHead(200, { "Content-Type": type, "Accept-Ranges": "bytes", "Cache-Control": "no-cache" });
     res.end(data);
   } catch (err) {
     res.writeHead(500).end("Server error: " + err.message);

@@ -1221,6 +1221,29 @@ h3 { font-family: var(--font-body); font-size: var(--fs-h3); font-weight: 700; }
 .builders-row span { font-size: 0.92rem; color: var(--ink-soft); }
 .builders-row b { color: var(--ink); font-weight: 700; }
 
+/* ---------- Video comercial: el video es vertical (9:16) — se muestra en su
+   proporción real, como una tarjeta protagonista, nunca estirado a lo ancho
+   del wrap ni recortado con object-fit. ---------- */
+.video-showcase .section-lead { margin-bottom: 0; }
+.video-frame {
+  margin: clamp(2.5rem, 2rem + 2.5vw, 4rem) auto 0;
+  max-width: 420px;
+  width: 100%;
+}
+.video-panel {
+  padding: 0;
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: var(--shadow-flagship);
+}
+.video-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1728 / 3072;
+  background: var(--ink);
+}
+@media (min-width: 640px) { .video-frame { max-width: 440px; } }
+
 /* ---------- Reducir el reveal escalonado: los grids aparecen como un solo
    bloque, no elemento por elemento (evita el efecto "todo hace fade-up"). ---------- */
 .has-js .quote-grid[data-reveal],
