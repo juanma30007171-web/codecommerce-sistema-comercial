@@ -87,18 +87,20 @@
   }
 
   /* ---------- Capacidades de video: overlay de play propio (independiente
-     del video-showcase anterior — ids y lógica separados) ---------- */
-  const capabilitiesVideo = document.getElementById("capabilitiesVideo");
-  const capabilitiesPlayBtn = document.getElementById("capabilitiesPlayBtn");
-  if (capabilitiesVideo && capabilitiesPlayBtn) {
-    capabilitiesPlayBtn.addEventListener("click", () => {
-      capabilitiesVideo.setAttribute("controls", "");
-      capabilitiesVideo.play().catch(() => {});
+     del video-showcase anterior — ids y lógica separados). Recorre cada
+     panel de la sección para soportar varios ejemplos de video. ---------- */
+  document.querySelectorAll(".capabilities-video__panel").forEach((panel) => {
+    const video = panel.querySelector(".capabilities-video__media");
+    const playBtn = panel.querySelector(".capabilities-video__play");
+    if (!video || !playBtn) return;
+    playBtn.addEventListener("click", () => {
+      video.setAttribute("controls", "");
+      video.play().catch(() => {});
     });
-    capabilitiesVideo.addEventListener("play", () => {
-      capabilitiesPlayBtn.classList.add("is-hidden");
+    video.addEventListener("play", () => {
+      playBtn.classList.add("is-hidden");
     });
-  }
+  });
 
   /* ---------- Scroll reveal ---------- */
   const revealEls = document.querySelectorAll("[data-reveal]");
