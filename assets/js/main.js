@@ -86,6 +86,20 @@
     });
   }
 
+  /* ---------- Capacidades de video: overlay de play propio (independiente
+     del video-showcase anterior — ids y lógica separados) ---------- */
+  const capabilitiesVideo = document.getElementById("capabilitiesVideo");
+  const capabilitiesPlayBtn = document.getElementById("capabilitiesPlayBtn");
+  if (capabilitiesVideo && capabilitiesPlayBtn) {
+    capabilitiesPlayBtn.addEventListener("click", () => {
+      capabilitiesVideo.setAttribute("controls", "");
+      capabilitiesVideo.play().catch(() => {});
+    });
+    capabilitiesVideo.addEventListener("play", () => {
+      capabilitiesPlayBtn.classList.add("is-hidden");
+    });
+  }
+
   /* ---------- Scroll reveal ---------- */
   const revealEls = document.querySelectorAll("[data-reveal]");
   if ("IntersectionObserver" in window && revealEls.length) {
