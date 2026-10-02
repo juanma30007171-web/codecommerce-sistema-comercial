@@ -1,12 +1,12 @@
-// Meta Pixel de CodeCommerce: infraestructura lista, sin Pixel conectado todavía.
+// Meta Pixel de CodeCommerce: conectado (Pixel ID 1380723414108451).
 // Este sitio es estático (sin build ni variables de entorno), así que el ID del
 // Pixel se configura aquí. Es un identificador público: se puede versionar.
 // Con el ID vacío no se carga ningún script ni se envía ningún evento.
 (() => {
   "use strict";
 
-  // ↓↓↓ Pegar aquí el Pixel ID de Meta Events Manager (solo números). ↓↓↓
-  const META_PIXEL_ID = "";
+  // Pixel ID de Code Commerce en Meta Events Manager (solo números).
+  const META_PIXEL_ID = "1380723414108451";
 
   // Eventos propios (se envían con trackCustom). El resto son estándar de Meta:
   // PageView, Lead, Contact, Schedule, ViewContent.

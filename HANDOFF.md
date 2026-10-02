@@ -33,32 +33,32 @@ Ninguna es necesaria. `.env.example` documenta:
 
 - Landing completa (secciones, videos, demo del Copiloto, CTAs a WhatsApp).
 - Capa de medición propia vía `window.dataLayer` (`whatsapp_click`, `cta_click`, `copilot_tab_view`, `copilot_demo_interaction`) en `assets/js/main.js`.
+- Meta Pixel conectado (ID `1380723414108451`): se inicializa una vez y envía `PageView` una vez por carga (ver abajo).
 
 ## Pendiente
 
-- Crear el Meta Pixel y conectarlo (ver abajo).
 - Decidir qué botones disparan cada evento de Meta (no instrumentado a propósito).
 - Google Tag Manager aún no está inyectado (el `dataLayer` existe pero nadie lo consume).
 - `VISUAL_ASSETS_TODO.md` lista assets visuales pendientes.
 
 ## Meta Tracking
 
-**El Pixel todavía NO ha sido creado ni conectado.** No hay ningún ID en el código y hoy no se carga ningún script de Meta.
+**El Meta Pixel de Code Commerce está conectado.** Pixel ID: `1380723414108451`.
 
-Infraestructura lista:
+- `assets/js/meta-pixel.js` — carga `fbevents.js`, inicializa el Pixel una sola vez, envía `PageView` una vez por carga y expone `window.ccMeta.track(evento, params)`.
+- `index.html` — incluye ese script justo antes de `main.js`. No hay otro snippet de Meta en el sitio.
 
-- `assets/js/meta-pixel.js` — carga el Pixel, envía `PageView` una vez por carga y expone `window.ccMeta.track(evento, params)`.
-- `index.html` — incluye ese script justo antes de `main.js`.
-
-**Dónde poner el Pixel ID:** como el sitio es estático no existe `NEXT_PUBLIC_META_PIXEL_ID`. El ID se pega en la constante al inicio de `assets/js/meta-pixel.js`:
+**Dónde está el Pixel ID:** como el sitio es estático no existe `NEXT_PUBLIC_META_PIXEL_ID`. El ID vive en la constante al inicio de `assets/js/meta-pixel.js`:
 
 ```js
-const META_PIXEL_ID = "";   // ← pegar aquí el ID (solo números)
+const META_PIXEL_ID = "1380723414108451";
 ```
 
 Es un identificador público, así que se versiona y se despliega con un commit normal.
 
-Eventos disponibles: `PageView` (automático), `Lead`, `Contact`, `Schedule`, `ViewContent` (estándar) y `WhatsAppClick` (custom). Ejemplo:
+**Aún sin implementar:** Conversions API (CAPI) y los eventos por botón. Hoy solo se envía `PageView`.
+
+Eventos disponibles para instrumentar: `Lead`, `Contact`, `Schedule`, `ViewContent` (estándar) y `WhatsAppClick` (custom). Ejemplo:
 
 ```js
 window.ccMeta.track("Lead");
@@ -70,7 +70,6 @@ Los listeners de CTA ya existentes en `assets/js/main.js` (los que hacen `dataLa
 ## Continuar desde otro computador
 
 1. Clonar el repo y ejecutar `node server.mjs`.
-2. Crear el Pixel de Code Commerce en Meta Events Manager.
-3. Pegar el ID en `assets/js/meta-pixel.js`, verificar con Meta Pixel Helper que llega `PageView`.
-4. Definir e instrumentar los eventos por botón.
-5. Commit + push a `master` y desplegar.
+2. Verificar con Meta Pixel Helper (o DevTools → Network, filtro `facebook`) que llega un solo `PageView` del Pixel `1380723414108451`.
+3. Definir e instrumentar los eventos por botón.
+4. Commit + push a `master` y desplegar.
