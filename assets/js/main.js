@@ -20,7 +20,9 @@
     nav: "navigation",
     "nav-mobile": "navigation",
     footer: "footer",
-    "sticky-mobile": "sticky_mobile"
+    "sticky-mobile": "sticky_mobile",
+    floating: "floating_button",
+    "lead-guide": "lead_guide"
   };
   // =================================================================================
 
@@ -38,6 +40,8 @@
         event: "whatsapp_click",
         source: WA_SOURCE_MAP[ctaName] || ctaName || "unknown"
       });
+      // Etapa 2 (pendiente de autorización): aquí irá
+      // window.ccMeta.track("WhatsAppClick"). Hoy no se envía ningún evento a Meta.
     });
   });
 
@@ -101,6 +105,43 @@
       playBtn.classList.add("is-hidden");
     });
   });
+
+  /* ---------- Un solo video a la vez: al reproducir uno se pausan los demás
+     (evita varias descargas pesadas en paralelo, sobre todo en móvil). ---------- */
+  const pageVideos = Array.from(document.querySelectorAll("video"));
+  pageVideos.forEach((video) => {
+    video.addEventListener("play", () => {
+      pageVideos.forEach((other) => {
+        if (other !== video && !other.paused) other.pause();
+      });
+    });
+  });
+
+  /* ---------- Guía IA (lead magnet): UI lista, sin envío de datos ----------
+     LEAD_GUIDE_ENDPOINT vacío = no existe backend todavía: el formulario se
+     valida en el navegador pero NO envía ni guarda nada, y muestra el estado
+     "en preparación" con salida a WhatsApp. Cuando exista el backend y el PDF
+     (ruta en data-guide-url del <form>), se conecta aquí y se muestra
+     #leadGuideSuccess con la descarga. Sin eventos de Meta en esta etapa. */
+  const LEAD_GUIDE_ENDPOINT = "";
+  const leadForm = document.getElementById("leadGuideForm");
+  if (leadForm) {
+    const pending = document.getElementById("leadGuidePending");
+    leadForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      leadForm.classList.add("was-validated");
+      if (!leadForm.checkValidity()) {
+        leadForm.reportValidity();
+        return;
+      }
+      if (!LEAD_GUIDE_ENDPOINT) {
+        if (pending) {
+          pending.hidden = false;
+          pending.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "nearest" });
+        }
+      }
+    });
+  }
 
   /* ---------- Scroll reveal ---------- */
   const revealEls = document.querySelectorAll("[data-reveal]");

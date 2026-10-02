@@ -26,7 +26,8 @@ const MIME = {
   ".woff2": "font/woff2",
   ".txt": "text/plain; charset=utf-8",
   ".xml": "application/xml; charset=utf-8",
-  ".mp4": "video/mp4"
+  ".mp4": "video/mp4",
+  ".pdf": "application/pdf"
 };
 
 // Video necesita soporte de Range (206 Partial Content) para que el navegador

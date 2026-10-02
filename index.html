@@ -204,19 +204,21 @@
 
         <div class="video-frame exhibit" data-reveal>
           <div class="panel video-panel">
+            <!-- Versión re-editada (subtitulada). El archivo anterior,
+                 CodeCommerce_FINAL_v04.mp4, se conserva en disco hasta validar esta. -->
             <video
               class="video-player"
               id="commercialVideo"
-              preload="metadata"
+              preload="none"
               playsinline
-              poster="/assets/media/video/codecommerce-video-poster.webp"
+              poster="/assets/media/video/codecommerce-sistema-comercial-reedit-poster.webp"
               width="1728"
               height="3072"
               aria-label="Video oficial de presentación de CodeCommerce"
             >
-              <source src="/assets/media/video/CodeCommerce_FINAL_v04.mp4" type="video/mp4" />
+              <source src="/assets/media/video/codecommerce-sistema-comercial-reedit.mp4" type="video/mp4" />
               Tu navegador no soporta la reproducción de video en HTML5.
-              <a href="/assets/media/video/CodeCommerce_FINAL_v04.mp4">Descarga el video aquí</a>.
+              <a href="/assets/media/video/codecommerce-sistema-comercial-reedit.mp4">Descarga el video aquí</a>.
             </video>
             <button type="button" class="video-play-btn" id="videoPlayBtn" aria-label="Reproducir video oficial de CodeCommerce">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
@@ -407,7 +409,7 @@
             <video
               class="capabilities-video__media capabilities-video__media--vertical"
               id="capabilitiesVideoFeature"
-              preload="metadata"
+              preload="none"
               playsinline
               poster="/assets/media/video/codecommerce-cinematic-gpu-poster.webp"
               width="1080"
@@ -425,6 +427,105 @@
         </div>
       </div>
 
+      <!-- Anuncios verticales: cada video usa preload="none" + poster, así que
+           ninguno se descarga hasta que el usuario pulsa play. Móvil: carrusel
+           horizontal con scroll-snap; desktop: cuatro columnas. -->
+      <div class="capabilities-reel">
+        <div class="capabilities-reel__head" data-reveal>
+          <p class="capabilities-video__demo-label mono"><span class="status-dot" aria-hidden="true"></span>Anuncios verticales</p>
+          <h3 class="capabilities-reel__title">Anuncios listos para Reels, TikTok y Shorts</h3>
+          <p class="capabilities-reel__text">Guion, grabación, edición, subtítulos dinámicos y motion graphics.
+            Cuatro piezas reales, cuatro formas distintas de contar una oferta.</p>
+        </div>
+
+        <ul class="capabilities-reel__track" aria-label="Ejemplos de anuncios verticales producidos por CodeCommerce" data-reveal>
+          <li class="capabilities-reel__item">
+            <div class="panel capabilities-video__panel">
+              <video
+                class="capabilities-video__media capabilities-video__media--reel"
+                preload="none"
+                playsinline
+                poster="/assets/media/video/codecommerce-anuncio-si-desaparece-poster.webp"
+                width="1728"
+                height="3072"
+                aria-label="Anuncio de conversión: presentador a cámara con interfaz animada"
+              >
+                <source src="/assets/media/video/codecommerce-anuncio-si-desaparece.mp4" type="video/mp4" />
+              </video>
+              <button type="button" class="capabilities-video__play" aria-label="Reproducir anuncio de conversión (41 segundos)">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+              </button>
+              <span class="capabilities-reel__duration mono" aria-hidden="true">0:41</span>
+            </div>
+            <p class="capabilities-reel__type mono">Anuncio de conversión</p>
+            <p class="capabilities-reel__desc">Presentador a cámara, interfaz del producto animada y cierre con llamado a la acción.</p>
+          </li>
+          <li class="capabilities-reel__item">
+            <div class="panel capabilities-video__panel">
+              <video
+                class="capabilities-video__media capabilities-video__media--reel"
+                preload="none"
+                playsinline
+                poster="/assets/media/video/codecommerce-anuncio-autonomia-poster.webp"
+                width="1728"
+                height="3072"
+                aria-label="Anuncio explicativo de marca con varios presentadores y motion graphics"
+              >
+                <source src="/assets/media/video/codecommerce-anuncio-autonomia.mp4" type="video/mp4" />
+              </video>
+              <button type="button" class="capabilities-video__play" aria-label="Reproducir anuncio explicativo de marca (1 minuto)">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+              </button>
+              <span class="capabilities-reel__duration mono" aria-hidden="true">1:01</span>
+            </div>
+            <p class="capabilities-reel__type mono">Explicativo de marca</p>
+            <p class="capabilities-reel__desc">Varios presentadores, recursos físicos y motion graphics para explicar una oferta completa.</p>
+          </li>
+          <li class="capabilities-reel__item">
+            <div class="panel capabilities-video__panel">
+              <video
+                class="capabilities-video__media capabilities-video__media--reel"
+                preload="none"
+                playsinline
+                poster="/assets/media/video/codecommerce-anuncio-codeperson-poster.webp"
+                width="1728"
+                height="3072"
+                aria-label="Anuncio narrativo con varias escenas y locaciones"
+              >
+                <source src="/assets/media/video/codecommerce-anuncio-codeperson.mp4" type="video/mp4" />
+              </video>
+              <button type="button" class="capabilities-video__play" aria-label="Reproducir anuncio narrativo (59 segundos)">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+              </button>
+              <span class="capabilities-reel__duration mono" aria-hidden="true">0:59</span>
+            </div>
+            <p class="capabilities-reel__type mono">Storytelling</p>
+            <p class="capabilities-reel__desc">Una historia con varias escenas y locaciones, montada para retener hasta el final.</p>
+          </li>
+          <li class="capabilities-reel__item">
+            <div class="panel capabilities-video__panel">
+              <video
+                class="capabilities-video__media capabilities-video__media--reel"
+                preload="none"
+                playsinline
+                poster="/assets/media/video/codecommerce-anuncio-mas-presupuesto-poster.webp"
+                width="1728"
+                height="3072"
+                aria-label="Anuncio educativo sobre inteligencia artificial con subtítulos dinámicos"
+              >
+                <source src="/assets/media/video/codecommerce-anuncio-mas-presupuesto.mp4" type="video/mp4" />
+              </video>
+              <button type="button" class="capabilities-video__play" aria-label="Reproducir anuncio educativo (35 segundos)">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+              </button>
+              <span class="capabilities-reel__duration mono" aria-hidden="true">0:35</span>
+            </div>
+            <p class="capabilities-reel__type mono">Educativo</p>
+            <p class="capabilities-reel__desc">Gancho directo en el primer segundo, subtítulos dinámicos y cierre con diagnóstico.</p>
+          </li>
+        </ul>
+      </div>
+
       <div class="capabilities-video__grid">
         <div class="capabilities-video__frame exhibit" data-reveal>
           <p class="capabilities-video__demo-label mono"><span class="status-dot" aria-hidden="true"></span>Demo real</p>
@@ -432,7 +533,7 @@
             <video
               class="capabilities-video__media"
               id="capabilitiesVideo"
-              preload="metadata"
+              preload="none"
               playsinline
               poster="/assets/media/video/codecommerce-ai-transformation-poster.webp"
               width="1920"
@@ -456,7 +557,7 @@
             <video
               class="capabilities-video__media"
               id="capabilitiesVideo2"
-              preload="metadata"
+              preload="none"
               playsinline
               poster="/assets/media/video/codecommerce-meteor-ai-poster.webp"
               width="1080"
@@ -481,6 +582,8 @@
         <li class="capabilities-video__tag">Avatar hiperrealista</li>
         <li class="capabilities-video__tag">Cambio de entorno</li>
         <li class="capabilities-video__tag">Edición comercial</li>
+        <li class="capabilities-video__tag">Anuncios verticales</li>
+        <li class="capabilities-video__tag">Motion graphics</li>
       </ul>
     </div>
   </section>
@@ -904,6 +1007,89 @@
     </div>
   </section>
 
+  <!-- ============================ GUÍA IA (LEAD MAGNET) ============================
+       UI lista; el formulario NO envía datos todavía (sin backend ni endpoint).
+       La lógica y el punto de conexión están en assets/js/main.js → "Guía IA".
+       El PDF definitivo irá en /assets/downloads/guia-maestra-ia-codecommerce.pdf. -->
+  <section class="section section--surface lead-guide" id="guia-ia" aria-labelledby="guia-h">
+    <div class="wrap lead-guide__grid">
+      <div class="lead-guide__copy">
+        <p class="eyebrow" data-reveal>Guía gratuita</p>
+        <h2 id="guia-h" data-reveal>Tu negocio probablemente tiene tareas que una IA podría estar haciendo hoy.</h2>
+        <p class="section-lead" data-reveal>Obtén una guía práctica para identificar procesos repetitivos, elegir las herramientas
+          correctas y empezar a construir un sistema de trabajo con inteligencia artificial.</p>
+
+        <div class="lead-guide__doc exhibit" data-reveal>
+          <div class="exhibit-label"><span class="mono">PDF</span> — Guía maestra para empezar a trabajar con Inteligencia Artificial</div>
+          <div class="panel panel--dark lead-guide__toc">
+            <p class="lead-guide__toc-head mono">Lo que vas a encontrar</p>
+            <ol class="lead-guide__toc-list">
+              <li><span class="mono">01</span>Cómo identificar tareas automatizables</li>
+              <li><span class="mono">02</span>Tareas repetitivas vs. decisiones humanas</li>
+              <li><span class="mono">03</span>ChatGPT y asistentes de IA, sin tecnicismos</li>
+              <li><span class="mono">04</span>Cómo crear flujos de trabajo y automatizaciones</li>
+              <li><span class="mono">05</span>Organizar la información de tu negocio</li>
+              <li><span class="mono">06</span>Ejemplos para ventas, marketing, administración y contenido</li>
+              <li><span class="mono">07</span>Checklist para encontrar oportunidades en tu empresa</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <div class="lead-guide__form-wrap" data-reveal>
+        <form class="panel lead-form" id="leadGuideForm" novalidate
+              data-guide-url="/assets/downloads/guia-maestra-ia-codecommerce.pdf">
+          <p class="lead-form__title">Recibe la guía</p>
+          <p class="lead-form__sub">Para dueños de negocio y equipos que quieren empezar con IA de forma práctica.</p>
+
+          <div class="lead-form__field">
+            <label for="leadName">Nombre</label>
+            <input id="leadName" name="nombre" type="text" autocomplete="name" required maxlength="80" />
+          </div>
+          <div class="lead-form__field">
+            <label for="leadEmail">Email</label>
+            <input id="leadEmail" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="120" />
+          </div>
+          <div class="lead-form__field">
+            <label for="leadWhatsapp">WhatsApp</label>
+            <input id="leadWhatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" required
+                   pattern="\+?[0-9 \(\)\-]{7,20}" placeholder="+57 300 000 0000" maxlength="20" />
+          </div>
+          <div class="lead-form__field">
+            <label for="leadCompany">Empresa / negocio <span class="lead-form__optional">(opcional)</span></label>
+            <input id="leadCompany" name="empresa" type="text" autocomplete="organization" maxlength="120" />
+          </div>
+
+          <label class="lead-form__check">
+            <input type="checkbox" name="autorizacion_datos" required />
+            <span>Autorizo a CodeCommerce a tratar mis datos personales para enviarme la guía y contactarme sobre ella,
+              conforme a la <a href="/legal/politica-de-tratamiento-de-datos.html" target="_blank" rel="noopener">Política de tratamiento de datos</a>.</span>
+          </label>
+          <label class="lead-form__check">
+            <input type="checkbox" name="autorizacion_comunicaciones" />
+            <span>Quiero recibir contenido y ofertas de CodeCommerce por email o WhatsApp (opcional). Ver
+              <a href="/legal/politica-de-comunicaciones-comerciales.html" target="_blank" rel="noopener">Política de comunicaciones comerciales</a>.</span>
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--large btn--full">Quiero la guía</button>
+          <p class="lead-form__fine">Sin spam. Puedes pedir que eliminemos tus datos cuando quieras.</p>
+
+          <!-- Estado mientras no hay backend: no se envía ni se guarda ningún dato. -->
+          <div class="lead-form__status" id="leadGuidePending" role="status" hidden>
+            <p><b>Estamos terminando la guía.</b> Todavía no podemos enviarla desde aquí y no guardamos los datos de este formulario.
+              Escríbenos por WhatsApp y te la compartimos apenas esté lista.</p>
+            <a class="btn btn--ghost btn--small" href="#" data-cta="lead-guide" data-intent="guia-ia" data-wa>Escribir por WhatsApp</a>
+          </div>
+          <!-- Estado final (se activará cuando existan backend + PDF): descarga directa. -->
+          <div class="lead-form__status" id="leadGuideSuccess" role="status" hidden>
+            <p><b>Listo.</b> Tu guía está lista para descargar.</p>
+            <a class="btn btn--primary btn--small" id="leadGuideDownload" href="#" download>Descargar la guía (PDF)</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================ 14. FAQ ============================ -->
   <section class="section faq" id="faq" aria-labelledby="faq-h">
     <div class="wrap">
@@ -1009,6 +1195,14 @@
         <a href="#que-recibes">Qué incluye</a>
         <a href="#inversion">Inversión</a>
         <a href="#faq">Preguntas</a>
+        <a href="#guia-ia">Guía de IA</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-head mono">Legal</p>
+        <a href="/legal/politica-de-tratamiento-de-datos.html">Tratamiento de datos</a>
+        <a href="/legal/politica-de-cookies.html">Cookies y seguimiento</a>
+        <a href="/legal/terminos-y-condiciones.html">Términos y condiciones</a>
+        <a href="/legal/politica-de-comunicaciones-comerciales.html">Comunicaciones comerciales</a>
       </div>
     </div>
     <div class="wrap footer-legal">
@@ -1020,6 +1214,14 @@
   <div class="mobile-cta-bar" id="mobileCtaBar">
     <a class="btn btn--primary btn--full" href="#" data-cta="sticky-mobile" data-intent="implementar-codecommerce" data-wa>Quiero implementar CodeCommerce · $1.999.000 COP</a>
   </div>
+
+  <!-- Botón flotante de WhatsApp. Va después de la barra móvil para que el CSS
+       lo suba sobre ella y lo baje cuando la barra se oculta. Usa el mismo
+       [data-wa] que el resto de CTA (número/mensaje centralizados en main.js). -->
+  <a class="wa-float" href="#" data-cta="floating" data-intent="whatsapp-flotante" data-wa aria-label="Escríbenos por WhatsApp">
+    <svg class="wa-float__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.54-3.7 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></svg>
+    <span class="wa-float__label">¿Hablamos?</span>
+  </a>
 
   <!-- Meta Pixel: ID configurado en META_PIXEL_ID de assets/js/meta-pixel.js -->
   <script src="/assets/js/meta-pixel.js"></script>
