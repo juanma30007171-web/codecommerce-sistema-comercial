@@ -1,2 +1,8 @@
 # Local Netlify folder
 .netlify
+
+# env files (nunca versionar credenciales reales; .env.example sí se versiona)
+.env*
+!.env.example
+
+node_modules
