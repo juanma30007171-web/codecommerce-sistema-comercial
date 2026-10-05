@@ -50,11 +50,11 @@ y lanzamos contigo; después la IA te ayuda a operar; el control queda en tus ma
 (Copiloto: crear / analizar / optimizar / aprender) → confianza (IA que no
 inventa datos) → ritmo semanal → prueba concreta de inversión publicitaria
 ($600.000, explícitamente desacoplada del precio) → antes/después (contraste
-directo dependencia vs. propiedad) → precio ($1.999.000, único, dominante) →
+directo dependencia vs. propiedad) → precio ($2.900.000, único, dominante) →
 continuidad opcional → calificación (para quién sí/no + quién construye esto) →
 objeciones (FAQ) → cierre.
 
-**Precio:** $1.999.000 COP, pago único. El $600.000 COP de inversión publicitaria
+**Precio:** $2.900.000 COP, pago único. El $600.000 COP de inversión publicitaria
 inicial nunca aparece en el hero ni junto al precio total — se presenta solo,
 explícitamente etiquetado ("inversión publicitaria inicial incluida"), en su
 propia sección (`#presupuesto`) y como un ítem más de la lista en `#inversion`.
